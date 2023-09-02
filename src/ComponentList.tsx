@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
-import { useAppNavigation } from "./components/utils/useNavigation";
+import { useAppNavigation } from "./utils/useNavigation";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export function ComoponentList() {
