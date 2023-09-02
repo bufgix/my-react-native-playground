@@ -3,19 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { SolarTimePicker } from "./src/components/SolarTimePicker/SolarTimePicker";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { RootStackNavigation } from "./src/navigation";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <StatusBar style="light" />
-        <View
-          style={{ flex: 2, justifyContent: "flex-end", alignItems: "center" }}
-        >
-          <SolarTimePicker />
-        </View>
-        <View style={{ flex: 3 }} />
-      </View>
+      <NavigationContainer>
+        <RootStackNavigation />
+      </NavigationContainer>
     </GestureHandlerRootView>
   );
 }
