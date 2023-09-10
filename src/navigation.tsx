@@ -1,15 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { SolerTimePickerScreen } from "./components/SolarTimePicker/screen";
-import { PasswordInputScreen } from "./components/PasswordInput/screen";
 import { ComoponentList } from "./ComponentList";
-import { ScrollNumbersScreen } from "./components/ScrollNumbers/screen";
+import { ComponentScreenList } from "./constants";
 
 export type RootStackParams = {
-  SolarTimePicker: undefined;
-  PasswordInput: undefined;
-  ScrollNumbers: undefined;
-
+  [key in keyof typeof ComponentScreenList]: undefined;
+} & {
   ComoponentList: undefined;
 };
 
@@ -18,16 +14,17 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 export const RootStackNavigation = () => {
   return (
     <RootStack.Navigator
-      initialRouteName="ScrollNumbers"
+      initialRouteName="ComoponentList"
       screenOptions={{ headerShown: false }}
     >
       <RootStack.Screen name="ComoponentList" component={ComoponentList} />
-      <RootStack.Screen
-        name="SolarTimePicker"
-        component={SolerTimePickerScreen}
-      />
-      <RootStack.Screen name="PasswordInput" component={PasswordInputScreen} />
-      <RootStack.Screen name="ScrollNumbers" component={ScrollNumbersScreen} />
+      {Object.entries(ComponentScreenList).map(([name, component]) => (
+        <RootStack.Screen
+          key={name}
+          name={name as keyof RootStackParams}
+          component={component}
+        />
+      ))}
     </RootStack.Navigator>
   );
 };

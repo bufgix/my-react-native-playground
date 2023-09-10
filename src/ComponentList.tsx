@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useAppNavigation } from "./utils/useNavigation";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ComponentScreenList } from "./constants";
 
 export function ComoponentList() {
   const navgation = useAppNavigation();
@@ -11,24 +12,15 @@ export function ComoponentList() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" />
       <ScrollView>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => navgation.navigate("PasswordInput")}
-        >
-          <Text>PasswordInput</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => navgation.navigate("SolarTimePicker")}
-        >
-          <Text>SolarTimePicker</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => navgation.navigate("ScrollNumbers")}
-        >
-          <Text>ScrollNumbers</Text>
-        </TouchableOpacity>
+        {Object.keys(ComponentScreenList).map((name) => (
+          <TouchableOpacity
+            key={name}
+            style={styles.item}
+            onPress={() => navgation.navigate(name as any)}
+          >
+            <Text>{name}</Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
