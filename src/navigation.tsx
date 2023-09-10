@@ -3,11 +3,13 @@ import React from "react";
 import { SolerTimePickerScreen } from "./components/SolarTimePicker/screen";
 import { PasswordInputScreen } from "./components/PasswordInput/screen";
 import { ComoponentList } from "./ComponentList";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { ScrollNumbersScreen } from "./components/ScrollNumbers/screen";
 
 export type RootStackParams = {
   SolarTimePicker: undefined;
   PasswordInput: undefined;
+  ScrollNumbers: undefined;
+
   ComoponentList: undefined;
 };
 
@@ -16,7 +18,7 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 export const RootStackNavigation = () => {
   return (
     <RootStack.Navigator
-      initialRouteName="ComoponentList"
+      initialRouteName="ScrollNumbers"
       screenOptions={{ headerShown: false }}
     >
       <RootStack.Screen name="ComoponentList" component={ComoponentList} />
@@ -25,6 +27,7 @@ export const RootStackNavigation = () => {
         component={SolerTimePickerScreen}
       />
       <RootStack.Screen name="PasswordInput" component={PasswordInputScreen} />
+      <RootStack.Screen name="ScrollNumbers" component={ScrollNumbersScreen} />
     </RootStack.Navigator>
   );
 };

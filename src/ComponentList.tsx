@@ -23,6 +23,12 @@ export function ComoponentList() {
         >
           <Text>SolarTimePicker</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => navgation.navigate("ScrollNumbers")}
+        >
+          <Text>ScrollNumbers</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
