@@ -12,7 +12,6 @@ https://github.com/bufgix/my-react-native-playground/assets/22038798/87013130-7d
 ### Solar Time Picker
 
 
-https://github.com/bufgix/my-react-native-playground/assets/22038798/687b48b6-a009-4d9e-9e6a-650d894d192f
 
 
 Source: https://twitter.com/aheze0/status/1647730078653255682
