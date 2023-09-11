@@ -1,5 +1,28 @@
 ## My React Native Playground
 
+This is a collection of React Native UI components/animations that I have created for fun and learning purposes.
+
+### How to run
+
+1. Clone the repo
+
+```bash
+git clone https://github.com/bufgix/my-react-native-playground
+```
+
+2. Install dependencies
+
+```bash
+bun install
+```
+
+3. Run the app
+
+```bash
+bun start
+```
+
+
 ### PasswordInput
 
 
