@@ -1,8 +1,8 @@
-## My React Native Playground
+# My React Native Playground
 
 This is a collection of React Native UI components/animations that I have created for fun and learning purposes.
 
-### How to run
+## How to run
 
 1. Clone the repo
 
@@ -22,6 +22,8 @@ bun install
 bun start
 ```
 
+
+## Components
 
 ### PasswordInput
 
