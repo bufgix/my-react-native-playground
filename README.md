@@ -64,6 +64,9 @@ https://github.com/bufgix/my-react-native-playground/assets/22038798/fd48cb93-0e
 
 Source: https://twitter.com/DenisJeliazkov/status/1702940639544193378
 
+https://github.com/bufgix/my-react-native-playground/assets/22038798/ff19410c-cf2d-4b97-8e19-b60c8047c967
+
+
 
 
 
