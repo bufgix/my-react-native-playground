@@ -2,6 +2,10 @@
 
 This is a collection of React Native UI components/animations that I have created for fun and learning purposes.
 
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/bufgix)
+
+
 ## How to run
 
 1. Clone the repo
@@ -65,6 +69,8 @@ https://github.com/bufgix/my-react-native-playground/assets/22038798/fd48cb93-0e
 Source: https://twitter.com/DenisJeliazkov/status/1702940639544193378
 
 https://github.com/bufgix/my-react-native-playground/assets/22038798/ff19410c-cf2d-4b97-8e19-b60c8047c967
+
+
 
 
 
