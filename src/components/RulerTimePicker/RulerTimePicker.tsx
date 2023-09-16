@@ -1,7 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {
   Dimensions,
+  FlatList,
   ListRenderItem,
   StyleSheet,
   Text,
@@ -113,9 +114,27 @@ function Number({ value, y }: NumberProps) {
   );
 }
 
-export function RulerTimePicker() {
-  const hourY = useSharedValue(0);
-  const minuteY = useSharedValue(0);
+type RulerTimePickerProps = {
+  initialHour?: number;
+  initialMinute?: number;
+  onChange?: (hour: number, minute: number) => void;
+};
+function _RulerTimePicker({
+  initialHour = 0,
+  initialMinute = 0,
+  onChange,
+}: RulerTimePickerProps) {
+  const hourY = useSharedValue(initialHour * NUMBER_HEIGHT);
+  const minuteY = useSharedValue(initialMinute * NUMBER_HEIGHT);
+
+  const onMomentScrollEnd = useCallback(() => {
+    if (onChange) {
+      const hour = Math.round(hourY.value / NUMBER_HEIGHT);
+      const minute = Math.round(minuteY.value / NUMBER_HEIGHT);
+
+      onChange(hour, minute);
+    }
+  }, []);
 
   const onHourScroll = useAnimatedScrollHandler((event) => {
     hourY.value = event.contentOffset.y;
@@ -154,6 +173,15 @@ export function RulerTimePicker() {
         contentContainerStyle={{
           paddingVertical: NUMBER_HEIGHT,
         }}
+        getItemLayout={(_, index) => {
+          return {
+            length: NUMBER_HEIGHT,
+            offset: NUMBER_HEIGHT * index,
+            index,
+          };
+        }}
+        onMomentumScrollEnd={onMomentScrollEnd}
+        initialScrollIndex={initialHour}
         snapToOffsets={HOURS.map((_, i) => i * NUMBER_HEIGHT)}
         onScroll={onHourScroll}
         keyExtractor={(item) => item.toString()}
@@ -175,6 +203,15 @@ export function RulerTimePicker() {
         contentContainerStyle={{
           paddingVertical: NUMBER_HEIGHT,
         }}
+        getItemLayout={(_, index) => {
+          return {
+            length: NUMBER_HEIGHT,
+            offset: NUMBER_HEIGHT * index,
+            index,
+          };
+        }}
+        onMomentumScrollEnd={onMomentScrollEnd}
+        initialScrollIndex={initialMinute}
         snapToOffsets={MINUTES.map((_, i) => i * NUMBER_HEIGHT)}
         onScroll={onMinuteScroll}
         keyExtractor={(item) => item.toString()}
@@ -200,5 +237,7 @@ export function RulerTimePicker() {
     </View>
   );
 }
+
+export const RulerTimePicker = React.memo(_RulerTimePicker);
 
 const styles = StyleSheet.create({});
