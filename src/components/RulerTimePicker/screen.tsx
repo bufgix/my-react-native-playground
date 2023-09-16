@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { RulerTimePicker } from "./RulesTimePicker";
+import { RulerTimePicker } from "./RulerTimePicker";
 
 export function RulerTimePickerScreen() {
   return (
