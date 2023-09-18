@@ -1,3 +1,4 @@
+import { NotificationStackScreen } from "./components/NotificationStack/screen";
 import { PasswordInputScreen } from "./components/PasswordInput/screen";
 import { RulerTimePickerScreen } from "./components/RulerTimePicker/screen";
 import { ScrollNumbersScreen } from "./components/ScrollNumbers/screen";
@@ -10,4 +11,5 @@ export const ComponentScreenList = {
   ScrollNumbers: ScrollNumbersScreen,
   TelegramStatus: TelegramStatusScreen,
   RulerTimePicker: RulerTimePickerScreen,
+  NotificationStack: NotificationStackScreen,
 };

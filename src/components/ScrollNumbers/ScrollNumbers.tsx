@@ -60,6 +60,7 @@ function Number({ number, scrollY, index }: NumberProps) {
         {
           translateY: translteY.value,
         },
+
         {
           rotateX: `${rotateX.value}deg`,
         },
