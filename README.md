@@ -41,6 +41,9 @@ https://github.com/bufgix/my-react-native-playground/assets/22038798/ff19410c-cf
 
 Source: https://twitter.com/laurentdelrey/status/1702369534823301207
 
+https://github.com/bufgix/my-react-native-playground/assets/22038798/9a92e038-9731-4198-a663-967b16fc30ca
+
+
 
 
 ## How to run
