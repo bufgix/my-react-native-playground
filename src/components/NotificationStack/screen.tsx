@@ -1,11 +1,22 @@
 import { StatusBar } from "expo-status-bar";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
 
 import { NotificationStack } from "./NotificationStack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Order } from "./items/Order";
+import { Spotify } from "./items/Spotify";
+import { StopWatch } from "./items/StopWatch";
+import React, { useState } from "react";
+
+const notificationList = [StopWatch, Order, Spotify];
 
 export function NotificationStackScreen() {
   const { bottom } = useSafeAreaInsets();
+
+  const [notifications, setNotifications] = useState<typeof notificationList>(
+    []
+  );
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -13,7 +24,32 @@ export function NotificationStackScreen() {
         source={require("./bg.jpg")}
         style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}
       >
-        <NotificationStack style={{ marginBottom: bottom }} />
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Button
+            title="Add Notification"
+            onPress={() => {
+              setNotifications([
+                ...notifications,
+                notificationList[
+                  notifications.length % notificationList.length
+                ],
+              ]);
+            }}
+          />
+          <Button
+            title="Remove Notification"
+            onPress={() => {
+              setNotifications(notifications.slice(0, -1));
+            }}
+          />
+        </View>
+        <NotificationStack style={{ marginBottom: bottom }}>
+          {notifications.map((Notification, index) => (
+            <Notification key={index} />
+          ))}
+        </NotificationStack>
       </ImageBackground>
     </View>
   );

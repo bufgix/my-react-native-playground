@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Dimensions, StyleSheet, View, ViewProps, Text } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
@@ -10,13 +10,9 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-import { Spotify } from "./items/Spotify";
-import { Order } from "./items/Order";
-import { StopWatch } from "./items/StopWatch";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const ITEM_SIZE = SCREEN_WIDTH * 0.8;
-const NOTIFICATIONS = [<StopWatch />, <Order />, <Spotify />];
 
 const springConfig: WithSpringConfig = {
   damping: 20,
@@ -26,9 +22,9 @@ const springConfig: WithSpringConfig = {
 type NotificationItemProps = {
   index: number;
   x: Animated.SharedValue<number>;
-
   topElement: Animated.SharedValue<number>;
   stack: Animated.SharedValue<number[]>;
+  totalNotifications: number;
 } & ViewProps;
 function NotificationItem({
   index,
@@ -36,17 +32,18 @@ function NotificationItem({
   stack,
   topElement,
   children,
+  totalNotifications,
 }: NotificationItemProps) {
   const zIndex = useDerivedValue(() => {
     return stack.value.findIndex((v) => v === index);
-  });
+  }, [index]);
 
   const shouldMove = useDerivedValue(() => {
     return topElement.value === index;
-  });
+  }, [index]);
 
   const cardAnimatedStyle = useAnimatedStyle(() => {
-    const baseScale = 1 - (NOTIFICATIONS.length - zIndex.value - 1) * 0.1;
+    const baseScale = 1 - (totalNotifications - zIndex.value - 1) * 0.1;
 
     return {
       transform: [
@@ -69,7 +66,7 @@ function NotificationItem({
       ],
       zIndex: zIndex.value,
     };
-  }, []);
+  }, [totalNotifications]);
 
   return (
     <Animated.View
@@ -88,11 +85,21 @@ function NotificationItem({
 }
 
 type NotificationStackProps = {} & ViewProps;
-export function NotificationStack({ style, ...rest }: NotificationStackProps) {
+export function NotificationStack({
+  style,
+  children,
+  ...rest
+}: NotificationStackProps) {
   const translateX = useSharedValue(0);
+  const items = React.Children.toArray(children);
 
-  const stack = useSharedValue(NOTIFICATIONS.map((_, index) => index));
+  const stack = useSharedValue(items.map((_, index) => index));
   const topElement = useSharedValue(stack.value[stack.value.length - 1]);
+
+  useEffect(() => {
+    stack.value = items.map((_, index) => index);
+    topElement.value = items.length - 1;
+  }, [items]);
 
   const pan = Gesture.Pan()
     .onUpdate((e) => {
@@ -116,15 +123,16 @@ export function NotificationStack({ style, ...rest }: NotificationStackProps) {
   return (
     <GestureDetector gesture={pan}>
       <View style={[styles.container, style]} {...rest}>
-        {NOTIFICATIONS.map((_, index) => (
+        {items.map((_, index) => (
           <NotificationItem
             key={index}
             index={index}
             x={translateX}
             topElement={topElement}
             stack={stack}
+            totalNotifications={items.length}
           >
-            {NOTIFICATIONS[index]}
+            {items[index]}
           </NotificationItem>
         ))}
       </View>
