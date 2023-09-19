@@ -18,7 +18,7 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const ITEM_SIZE = SCREEN_WIDTH * 0.8;
 const NOTIFICATIONS = [<StopWatch />, <Order />, <Spotify />];
 
-const sprintConfig: WithSpringConfig = {
+const springConfig: WithSpringConfig = {
   damping: 20,
   stiffness: 200,
 };
@@ -51,10 +51,10 @@ function NotificationItem({
     return {
       transform: [
         {
-          translateX: shouldMove.value ? x.value : withSpring(0, sprintConfig),
+          translateX: shouldMove.value ? x.value : withSpring(0, springConfig),
         },
         {
-          translateY: withSpring(-(zIndex.value * 30), sprintConfig),
+          translateY: withSpring(-(zIndex.value * 30), springConfig),
         },
         {
           scale: shouldMove.value
@@ -64,7 +64,7 @@ function NotificationItem({
                 [0.7, baseScale, 0.7],
                 Extrapolate.CLAMP
               )
-            : withSpring(baseScale, sprintConfig),
+            : withSpring(baseScale, springConfig),
         },
       ],
       zIndex: zIndex.value,
@@ -105,11 +105,11 @@ export function NotificationStack({ style, ...rest }: NotificationStackProps) {
       ) {
         const temp = stack.value.filter((index) => index !== topElement.value);
         stack.value = [topElement.value, ...temp];
-        translateX.value = withSpring(0, sprintConfig, () => {
+        translateX.value = withSpring(0, springConfig, () => {
           topElement.value = stack.value[stack.value.length - 1];
         });
       } else {
-        translateX.value = withSpring(0, sprintConfig);
+        translateX.value = withSpring(0, springConfig);
       }
     });
 
