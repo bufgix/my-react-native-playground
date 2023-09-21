@@ -45,6 +45,12 @@ https://github.com/bufgix/my-react-native-playground/assets/22038798/9a92e038-97
 
 
 
+### Photo Extractor
+
+Soruce: https://apps.apple.com/us/app/ai-art-pic-generator-overhead/id6447619107
+
+
+
 
 ## How to run
 
