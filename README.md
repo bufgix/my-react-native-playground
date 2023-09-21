@@ -51,6 +51,10 @@ Soruce: https://apps.apple.com/us/app/ai-art-pic-generator-overhead/id6447619107
 
 
 
+https://github.com/bufgix/my-react-native-playground/assets/22038798/eda9a167-359c-4dd6-bd15-50c657cd666d
+
+
+
 
 ## How to run
 
