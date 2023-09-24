@@ -36,25 +36,21 @@ Source: https://twitter.com/DenisJeliazkov/status/1702940639544193378
 
 https://github.com/bufgix/my-react-native-playground/assets/22038798/ff19410c-cf2d-4b97-8e19-b60c8047c967
 
-
 ### Notification Stack
 
 Source: https://twitter.com/laurentdelrey/status/1702369534823301207
 
 https://github.com/bufgix/my-react-native-playground/assets/22038798/9a92e038-9731-4198-a663-967b16fc30ca
 
-
-
 ### Photo Extractor
 
 Soruce: https://apps.apple.com/us/app/ai-art-pic-generator-overhead/id6447619107
 
-
-
 https://github.com/bufgix/my-react-native-playground/assets/22038798/eda9a167-359c-4dd6-bd15-50c657cd666d
 
+### Apple Loading
 
-
+Source: https://twitter.com/GregoryMcFadden/status/1705243636990951733
 
 ## How to run
 
