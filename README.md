@@ -52,6 +52,10 @@ https://github.com/bufgix/my-react-native-playground/assets/22038798/eda9a167-35
 
 Source: https://twitter.com/GregoryMcFadden/status/1705243636990951733
 
+https://github.com/bufgix/my-react-native-playground/assets/22038798/865ccce2-5af0-4fa0-8fd6-0bb12b5696d8
+
+
+
 ## How to run
 
 1. Clone the repo
