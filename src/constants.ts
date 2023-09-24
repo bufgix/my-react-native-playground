@@ -1,3 +1,4 @@
+import { AppleLoadingScreen } from "./components/AppleLoading/screen";
 import { NotificationStackScreen } from "./components/NotificationStack/screen";
 import { PasswordInputScreen } from "./components/PasswordInput/screen";
 import { PhotoExtractorScreen } from "./components/PhotoExtractor/screen";
@@ -14,4 +15,5 @@ export const ComponentScreenList = {
   RulerTimePicker: RulerTimePickerScreen,
   NotificationStack: NotificationStackScreen,
   PhotoExtractor: PhotoExtractorScreen,
+  AppleLoading: AppleLoadingScreen,
 };
