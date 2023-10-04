@@ -5,6 +5,7 @@ import { PhotoExtractorScreen } from "./components/PhotoExtractor/screen";
 import { RulerTimePickerScreen } from "./components/RulerTimePicker/screen";
 import { ScrollNumbersScreen } from "./components/ScrollNumbers/screen";
 import { SolerTimePickerScreen } from "./components/SolarTimePicker/screen";
+import { TelegramProfileScreen } from "./components/TelegramProfile/screen";
 import { TelegramStatusScreen } from "./components/TelegramStatus/screen";
 
 export const ComponentScreenList = {
@@ -16,4 +17,5 @@ export const ComponentScreenList = {
   NotificationStack: NotificationStackScreen,
   PhotoExtractor: PhotoExtractorScreen,
   AppleLoading: AppleLoadingScreen,
+  TelegramProfile: TelegramProfileScreen,
 };
