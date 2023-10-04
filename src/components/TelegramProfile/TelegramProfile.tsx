@@ -92,7 +92,7 @@ export function TelegramProfile() {
   });
 
   const imageOpacity = useDerivedValue(() => {
-    return interpolate(scrollY.value, [20, 80], [1, 0], Extrapolate.CLAMP);
+    return interpolate(scrollY.value, [20, 100], [1, 0], Extrapolate.CLAMP);
   });
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
