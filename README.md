@@ -55,6 +55,13 @@ Source: https://twitter.com/GregoryMcFadden/status/1705243636990951733
 https://github.com/bufgix/my-react-native-playground/assets/22038798/865ccce2-5af0-4fa0-8fd6-0bb12b5696d8
 
 
+### Telegram Dynamic Island Profile
+
+Source: https://twitter.com/blvdmitry/status/1705893688910483677
+
+
+
+
 
 ## How to run
 
