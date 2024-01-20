@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Dimensions, StyleSheet, View, ViewProps, Text } from "react-native";
+import { Dimensions, StyleSheet, View, ViewProps } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   Extrapolate,
@@ -59,7 +59,7 @@ function NotificationItem({
                 x.value,
                 [-ITEM_SIZE / 2, 0, ITEM_SIZE / 2],
                 [0.7, baseScale, 0.7],
-                Extrapolate.CLAMP
+                Extrapolate.CLAMP,
               )
             : withSpring(baseScale, springConfig),
         },

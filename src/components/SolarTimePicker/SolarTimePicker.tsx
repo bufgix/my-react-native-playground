@@ -107,7 +107,7 @@ export function SolarTimePicker() {
       x.value,
       [panStartBound, peek.x, panEndBound],
       [0, height * 0.6, 0],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -116,7 +116,7 @@ export function SolarTimePicker() {
       x.value,
       [panStartBound, peek.x, panEndBound],
       [5, 50, 5],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -125,8 +125,8 @@ export function SolarTimePicker() {
       interpolateColor(
         x.value,
         [panStartBound, peek.x, panEndBound],
-        ["#d4812b", "#f0d60f", "#d4812b"]
-      )
+        ["#d4812b", "#f0d60f", "#d4812b"],
+      ),
     );
   });
 
@@ -135,7 +135,7 @@ export function SolarTimePicker() {
       x.value,
       [panStartBound, peek.x, panEndBound],
       [0, 1, 0],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 

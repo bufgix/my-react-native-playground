@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { RulerTimePicker } from "./RulerTimePicker";
 import Animated, { ZoomIn } from "react-native-reanimated";
 import { useState } from "react";
+import { RulerTimePicker } from "./RulerTimePicker";
 
 export function RulerTimePickerScreen() {
   const [state, setState] = useState({
@@ -75,6 +75,7 @@ export function RulerTimePickerScreen() {
             }}
           >
             <TouchableOpacity
+              accessibilityRole="button"
               style={{
                 flex: 1,
                 borderWidth: 1,
@@ -96,10 +97,11 @@ export function RulerTimePickerScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
+              accessibilityRole="button"
               onPress={() => {
                 Alert.alert(
                   "Done",
-                  `You set reminder at ${state.hour}:${state.minute}`
+                  `You set reminder at ${state.hour}:${state.minute}`,
                 );
               }}
               style={{

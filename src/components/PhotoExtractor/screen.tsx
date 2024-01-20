@@ -25,6 +25,7 @@ export function PhotoExtractorScreen() {
           }}
         >
           <TouchableOpacity
+            accessibilityRole="button"
             disabled={isExtracted}
             style={{
               padding: 10,
@@ -40,6 +41,7 @@ export function PhotoExtractorScreen() {
             <Text style={{ color: "white" }}>Extract</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            accessibilityRole="button"
             disabled={!isExtracted}
             style={{
               padding: 10,

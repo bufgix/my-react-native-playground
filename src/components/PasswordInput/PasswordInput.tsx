@@ -61,7 +61,7 @@ export function PasswordInput() {
       stroke: interpolateColor(
         progress.value,
         STEP_COLORS.map((_, i) => i / (STEP_COLORS.length - 1)),
-        STEP_COLORS
+        STEP_COLORS,
       ),
     };
   }, []);
@@ -124,6 +124,7 @@ export function PasswordInput() {
           />
         </Svg>
         <TextInput
+          accessibilityLabel="Text input field"
           style={{
             position: "absolute",
             top: 3,

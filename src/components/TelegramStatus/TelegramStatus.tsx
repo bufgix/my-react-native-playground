@@ -74,7 +74,7 @@ function Story({
       progress.value,
       [HEADER_BASE_HEIGHT + HEADER_BASE_HEIGHT / 2, HEADER_MAX_HEIGHT],
       [STORY_SIZE_MIN, STORY_SIZE_MAX],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -83,7 +83,7 @@ function Story({
       progress.value,
       [HEADER_MAX_HEIGHT, HEADER_MAX_HEIGHT + 50],
       [1, 1.2],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -95,7 +95,7 @@ function Story({
       progress.value,
       [HEADER_BASE_HEIGHT + 30, HEADER_MAX_HEIGHT],
       [0, 1],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -104,14 +104,14 @@ function Story({
       progress.value,
       [HEADER_BASE_HEIGHT + 100, HEADER_MAX_HEIGHT - 20],
       [-30, targetX],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     const y = interpolate(
       progress.value,
       [HEADER_BASE_HEIGHT + 100, HEADER_MAX_HEIGHT - 20],
       [0, HEADER_BASE_HEIGHT / 2 - 30],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     return { x, y };
@@ -142,7 +142,7 @@ function Story({
         progress.value,
         [HEADER_BASE_HEIGHT, HEADER_BASE_HEIGHT + 120, HEADER_MAX_HEIGHT],
         [0, 0, 1],
-        Extrapolate.CLAMP
+        Extrapolate.CLAMP,
       ),
     };
   });
@@ -196,7 +196,7 @@ export function TelegramStatus() {
       if (event.translationY < 0) {
         headerHeight.value = Math.max(
           HEADER_BASE_HEIGHT,
-          event.translationY + startHeaderHeight.value
+          event.translationY + startHeaderHeight.value,
         );
 
         headerToggle.value = false;
@@ -210,7 +210,7 @@ export function TelegramStatus() {
 
       headerHeight.value = Math.max(
         HEADER_BASE_HEIGHT,
-        scrollY.value + startHeaderHeight.value
+        scrollY.value + startHeaderHeight.value,
       );
 
       if (event.translationY > TOGGLE_THRESHOLD && !headerToggle.value) {
@@ -254,7 +254,7 @@ export function TelegramStatus() {
               SCREEN_WIDTH / 2 - textWidth / 2 + 20,
               SCREEN_WIDTH / 2 - textWidth / 2,
             ],
-            Extrapolate.CLAMP
+            Extrapolate.CLAMP,
           ),
         },
         {
@@ -262,7 +262,7 @@ export function TelegramStatus() {
             headerHeight.value,
             [HEADER_BASE_HEIGHT, HEADER_MAX_HEIGHT],
             [0, -5],
-            Extrapolate.CLAMP
+            Extrapolate.CLAMP,
           ),
         },
       ],
@@ -310,6 +310,7 @@ export function TelegramStatus() {
         </View>
 
         <TextInput
+          accessibilityLabel="Text input field"
           placeholder="Search"
           placeholderTextColor={"#858185"}
           style={styles.textInput}

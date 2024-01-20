@@ -1,13 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useCallback, useEffect, useRef } from "react";
-import {
-  Dimensions,
-  FlatList,
-  ListRenderItem,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import React, { useCallback } from "react";
+import { Dimensions, ListRenderItem, Text, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -72,7 +65,7 @@ function Number({ value, y }: NumberProps) {
         y.value,
         [minInput, value * NUMBER_HEIGHT, maxInput],
         [1, NUMBER_TEXT_MAX_SCALE, 1],
-        Extrapolate.CLAMP
+        Extrapolate.CLAMP,
       );
     }
 
@@ -239,5 +232,3 @@ function _RulerTimePicker({
 }
 
 export const RulerTimePicker = React.memo(_RulerTimePicker);
-
-const styles = StyleSheet.create({});

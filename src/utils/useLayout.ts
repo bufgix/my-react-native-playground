@@ -10,7 +10,7 @@ export const useLayout = () => {
   });
   const onLayout = useCallback(
     (e: LayoutChangeEvent) => setLayout(e.nativeEvent.layout),
-    []
+    [],
   );
 
   return {

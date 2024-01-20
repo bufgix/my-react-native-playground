@@ -19,7 +19,6 @@ export function Order() {
         resizeMode="cover"
         style={{
           flex: 1,
-        
         }}
       >
         <View

@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Button, ImageBackground, StyleSheet, View } from "react-native";
 
-import { NotificationStack } from "./NotificationStack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import React, { useState } from "react";
+import { NotificationStack } from "./NotificationStack";
 import { Order } from "./items/Order";
 import { Spotify } from "./items/Spotify";
 import { StopWatch } from "./items/StopWatch";
-import React, { useState } from "react";
 
 const notificationList = [StopWatch, Order, Spotify];
 
@@ -14,7 +14,7 @@ export function NotificationStackScreen() {
   const { bottom } = useSafeAreaInsets();
 
   const [notifications, setNotifications] = useState<typeof notificationList>(
-    []
+    [],
   );
 
   return (

@@ -94,7 +94,7 @@ const cubicBezier = (
   from: number,
   c1: number,
   c2: number,
-  to: number
+  to: number,
 ) => {
   "worklet";
   const term = 1 - t;
@@ -111,7 +111,7 @@ export const cubicBezierYForX = (
   b: Vector,
   c: Vector,
   d: Vector,
-  precision = 2
+  precision = 2,
 ) => {
   "worklet";
   const pa = -a.x + 3 * b.x - 3 * c.x + d.x;
@@ -171,7 +171,7 @@ export const controlPoint = (
   previous: Vector,
   next: Vector,
   reverse: boolean,
-  smoothing: number
+  smoothing: number,
 ) => {
   "worklet";
   const p = previous || current;
@@ -193,7 +193,7 @@ export const controlPoint = (
 export const curveLines = (
   points: Vector[],
   smoothing: number,
-  strategy: "complex" | "bezier" | "simple"
+  strategy: "complex" | "bezier" | "simple",
 ) => {
   "worklet";
   const path = Skia.Path.Make();
@@ -209,14 +209,15 @@ export const curveLines = (
     const cps = controlPoint(prev, points[i - 2], point, false, smoothing);
     const cpe = controlPoint(point, prev, next, true, smoothing);
     switch (strategy) {
-      case "simple":
+      case "simple": {
         const cp = {
           x: (cps.x + cpe.x) / 2,
           y: (cps.y + cpe.y) / 2,
         };
         path.quadTo(cp.x, cp.y, point.x, point.y);
         break;
-      case "bezier":
+      }
+      case "bezier": {
         const p0 = points[i - 2] || prev;
         const p1 = points[i - 1];
         const cp1x = (2 * p0.x + p1.x) / 3;
@@ -233,10 +234,11 @@ export const curveLines = (
             points[points.length - 1].x,
             points[points.length - 1].y,
             points[points.length - 1].x,
-            points[points.length - 1].y
+            points[points.length - 1].y,
           );
         }
         break;
+      }
       case "complex":
         path.cubicTo(cps.x, cps.y, cpe.x, cpe.y, point.x, point.y);
         break;

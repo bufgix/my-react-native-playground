@@ -28,7 +28,7 @@ function Number({ number, scrollY, index }: NumberProps) {
         (index + 1) * ITEM_SIZE - 30,
       ],
       [0, 1, 0],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   }, []);
 
@@ -37,7 +37,7 @@ function Number({ number, scrollY, index }: NumberProps) {
       scrollY.value,
       [(index - 1) * ITEM_SIZE, index * ITEM_SIZE, (index + 1) * ITEM_SIZE],
       [-ITEM_SIZE / 2, 0, ITEM_SIZE / 2],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -46,7 +46,7 @@ function Number({ number, scrollY, index }: NumberProps) {
       scrollY.value,
       [(index - 1) * ITEM_SIZE, index * ITEM_SIZE, (index + 1) * ITEM_SIZE],
       [45, 0, -45],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 

@@ -74,14 +74,14 @@ const deflate = (rct: SkRect, amount: number) => {
     rct.x + amount,
     rct.y + amount,
     rct.width - amount * 2,
-    rct.height - amount * 2
+    rct.height - amount * 2,
   );
 };
 
 const generateTrianglePointsAndIndices = (
   rct: SkRect,
   triangleNumberHeight: number,
-  z: number
+  z: number,
 ) => {
   const A = 5;
   const F = 1;
@@ -100,7 +100,7 @@ const generateTrianglePointsAndIndices = (
     for (let j = 0; j <= 1; j++) {
       const point: Vector = vec(
         rct.x + j * triangleWidth,
-        rct.y + i * triangleHeight
+        rct.y + i * triangleHeight,
       );
       textures.push(point);
       const d = A * noise((F * i) / triangleNumberHeight, F * j, z);
@@ -157,7 +157,7 @@ const Stripe = ({
   const { vertices, indices, textures } = generateTrianglePointsAndIndices(
     rct,
     20,
-    index / NUMBER_OF_STRIPE
+    index / NUMBER_OF_STRIPE,
   );
   const animatedVertices = useComputedValue(() => {
     if (i0.current === index && i.current !== index) {
@@ -213,14 +213,14 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
       (SCREEN_WIDTH - IMAGE_WIDTH) / 2,
       IMAGE_START_Y,
       IMAGE_WIDTH,
-      IMAGE_HEIGHT
+      IMAGE_HEIGHT,
     );
 
     const imageBorderRect = rect(
       imageRect.x - 10,
       imageRect.y - 10,
       imageRect.width + 20,
-      imageRect.height + 20
+      imageRect.height + 20,
     );
 
     const y = useValue(-10);
@@ -236,18 +236,18 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
 
     const playSound = async (
       type: keyof typeof SOUNDS = "stamp",
-      delay: number = 1000
+      delay: number = 1000,
     ) => {
       const { sound: s } = await Audio.Sound.createAsync(SOUNDS[type]);
       sound.current = s;
       setTimeout(() => {
-        sound.current?.playAsync();
+        void sound.current?.playAsync();
       }, delay);
     };
 
     useEffect(() => {
       return () => {
-        sound.current?.unloadAsync();
+        void sound.current?.unloadAsync();
       };
     }, []);
 
@@ -258,7 +258,7 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
     const extract = useCallback(
       (cb?: () => void) => {
         const maxDistance = IMAGE_HEIGHT + EXTRA_DISTANCE;
-        playSound("paper", 0);
+        void playSound("paper", 0);
         runSpring(
           y,
           maxDistance * 0.3,
@@ -266,7 +266,7 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
             mass: 0.5,
           },
           () => {
-            playSound("stamp", 0);
+            void playSound("stamp", 0);
             runSpring(
               y,
               maxDistance,
@@ -276,12 +276,12 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
               () => {
                 onExtractComplete?.();
                 cb?.();
-              }
+              },
             );
-          }
+          },
         );
       },
-      [IMAGE_HEIGHT, onExtractComplete, y]
+      [IMAGE_HEIGHT, onExtractComplete, y],
     );
 
     const destroyImage = useCallback(
@@ -294,7 +294,7 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
             damping: 100,
           },
           () => {
-            playSound("shedder", 0);
+            void playSound("shedder", 0);
             runTiming(
               y,
               IMAGE_HEIGHT + EXTRA_DISTANCE + IMAGE_HEIGHT + 50,
@@ -314,21 +314,21 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
                         mass: 0.5,
                       });
                     });
-                  }
+                  },
                 );
                 runTiming(a, 10, { duration: 200 });
-              }
+              },
             );
-          }
+          },
         );
       },
-      [IMAGE_HEIGHT, a, lineY, y]
+      [IMAGE_HEIGHT, a, lineY, y],
     );
 
     const transform = useComputedValue(() => [{ translateY: y.current }], [y]);
     const transformLine = useComputedValue(
       () => [{ translateY: lineY.current }],
-      [lineY]
+      [lineY],
     );
 
     const gradientHeight = useComputedValue(() => {
@@ -338,7 +338,7 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
         y.current,
         [0, EXTRA_DISTANCE, IMAGE_HEIGHT, maxDistance],
         [0, 40, 20, 0],
-        Extrapolate.CLAMP
+        Extrapolate.CLAMP,
       );
     }, [y]);
 
@@ -394,7 +394,7 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
               0,
               LINE_HEIGHT / 2,
               SCREEN_WIDTH,
-              DELETE_START_Y - LINE_HEIGHT / 2
+              DELETE_START_Y - LINE_HEIGHT / 2,
             )}
           >
             {skiaImage && (
@@ -420,7 +420,7 @@ const _PhotoExtractor = forwardRef<PhotoExtractorHandle, Props>(
         </Canvas>
       </>
     );
-  }
+  },
 );
 
 export const PhotoExtractor = React.memo(_PhotoExtractor);

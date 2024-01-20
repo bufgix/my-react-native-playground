@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
-import { useAppNavigation } from "./utils/useNavigation";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useAppNavigation } from "./utils/useNavigation";
 import { ComponentScreenList } from "./constants";
 
 export function ComoponentList() {
@@ -14,6 +14,7 @@ export function ComoponentList() {
       <ScrollView>
         {Object.keys(ComponentScreenList).map((name) => (
           <TouchableOpacity
+            accessibilityRole="button"
             key={name}
             style={styles.item}
             onPress={() => navgation.navigate(name as any)}

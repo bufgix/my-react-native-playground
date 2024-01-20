@@ -41,7 +41,7 @@ const polarToCartesian = (
   centerX: number,
   centerY: number,
   radius: number,
-  angleInDegrees: number
+  angleInDegrees: number,
 ) => {
   "worklet";
   const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
@@ -53,7 +53,7 @@ const polarToCartesian = (
 
 const moveNearestCirclePoint = (
   featureDot: { x: number; y: number; size: number },
-  circle: { x: number; y: number; size: number }
+  circle: { x: number; y: number; size: number },
 ) => {
   "worklet";
   const radius = featureDot.size + circle.size;
@@ -64,7 +64,7 @@ const moveNearestCirclePoint = (
     radius,
     (Math.atan2(circle.y - featureDot.y, circle.x - featureDot.x) * 180) /
       Math.PI +
-      90
+      90,
   );
 
   return pos;
@@ -156,7 +156,7 @@ function FeatureDot({
       SCREEN_WIDTH / 2,
       SCREEN_WIDTH / 2,
       dot.value.distance,
-      rotation
+      rotation,
     );
 
     return pos;
@@ -237,13 +237,13 @@ function Dot({
         SCREEN_WIDTH / 2,
         SCREEN_WIDTH / 2,
         featureDot.value.distance,
-        featureDot.value.angle + progress.value
+        featureDot.value.angle + progress.value,
       );
       const dotPos = polarToCartesian(
         SCREEN_WIDTH / 2,
         SCREEN_WIDTH / 2,
         distance - size,
-        angle
+        angle,
       );
 
       const pos = moveNearestCirclePoint(
@@ -256,7 +256,7 @@ function Dot({
           x: dotPos.x,
           y: dotPos.y,
           size: size,
-        }
+        },
       );
 
       return {
@@ -264,13 +264,13 @@ function Dot({
           featureScaleMultiplier.value,
           [0, 1],
           [dotPos.x, pos.x],
-          Extrapolate.CLAMP
+          Extrapolate.CLAMP,
         ),
         y: interpolate(
           featureScaleMultiplier.value,
           [0, 1],
           [dotPos.y, pos.y],
-          Extrapolate.CLAMP
+          Extrapolate.CLAMP,
         ),
         size: interpolate(featureScaleMultiplier.value, [1, 0], [5, size]),
       };
@@ -279,7 +279,7 @@ function Dot({
         SCREEN_WIDTH / 2,
         SCREEN_WIDTH / 2,
         distance - size,
-        angle
+        angle,
       );
 
       return {
@@ -317,7 +317,7 @@ export function AppleLoading() {
   useEffect(() => {
     t.value = withRepeat(
       withTiming(360, { duration: 12000, easing: Easing.linear }),
-      -1
+      -1,
     );
     featureScaleMultiplier.value = withRepeat(
       withSequence(
@@ -326,17 +326,17 @@ export function AppleLoading() {
           withSpring(1, {
             damping: 50,
             stiffness: 100,
-          })
+          }),
         ),
         withDelay(
           1000,
           withSpring(0, { damping: 50, stiffness: 100 }, () => {
             featureIndex.value = (featureIndex.value + 4) % LAYERS[0].dotCount;
             runOnJS(setImage)(APPS[featureIndex.value % APPS.length]);
-          })
-        )
+          }),
+        ),
       ),
-      -1
+      -1,
     );
   }, []);
 

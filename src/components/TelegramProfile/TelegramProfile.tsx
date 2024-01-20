@@ -44,7 +44,7 @@ export function TelegramProfile() {
       scrollY.value,
       [0, 100],
       [PROFILE_CIRCLE_Y, 30],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -53,7 +53,7 @@ export function TelegramProfile() {
       scrollY.value,
       [10, 100],
       [CIRCLE_MAX_RADIUS, NOTCH_HEIGHT / 2],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -62,7 +62,7 @@ export function TelegramProfile() {
       scrollY.value,
       [20, 80],
       [CIRCLE_MAX_RADIUS * 2, (NOTCH_HEIGHT / 2) * 2],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
   });
 
@@ -98,13 +98,13 @@ export function TelegramProfile() {
   const headerAnimatedStyle = useAnimatedStyle(() => {
     const height = Math.max(
       PROFILE_CIRCLE_Y + CIRCLE_MAX_RADIUS + 100 - scrollY.value,
-      top + NOTCH_HEIGHT + debugTop + 20
+      top + NOTCH_HEIGHT + debugTop + 20,
     );
 
     const backgroundColor = interpolateColor(
       scrollY.value,
       [0, 100],
-      ["#1b1f2b", "#232c3d"]
+      ["#1b1f2b", "#232c3d"],
     );
 
     return {
@@ -118,14 +118,14 @@ export function TelegramProfile() {
       scrollY.value,
       [100, 200],
       [1, 0.7],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     const y = interpolate(
       scrollY.value,
       [100, 200],
       [0, 60],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     return {
@@ -138,7 +138,7 @@ export function TelegramProfile() {
       scrollY.value,
       [80, 130],
       [1, 0],
-      Extrapolate.CLAMP
+      Extrapolate.CLAMP,
     );
 
     return {
@@ -242,9 +242,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     flexDirection: "column",
     alignItems: "center",
-  },
-  image: {
-    borderRadius: 9999,
   },
   title: {
     fontSize: 26,

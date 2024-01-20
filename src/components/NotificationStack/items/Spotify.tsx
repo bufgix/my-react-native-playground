@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { ResizeMode, Video, VideoProps } from "expo-av";
+import { ResizeMode, Video } from "expo-av";
 
 export function Spotify() {
   return (
