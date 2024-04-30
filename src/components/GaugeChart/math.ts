@@ -44,6 +44,24 @@ export const segmentPath = (
   ].join("");
 };
 
+export const segmentPathLinear = (
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+) => {
+  const point = (x: number, y: number) =>
+    [x, y].map((n) => n.toPrecision(5)).join(",");
+
+  return [
+    `M${point(x, y)}`,
+    `L${point(x + width, y)}`,
+    `L${point(x + width, y + height)}`,
+    `L${point(x, y + height)}`,
+    "Z",
+  ].join("");
+};
+
 export const circlePath = (
   x: number,
   y: number,
